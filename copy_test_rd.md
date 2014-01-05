@@ -123,3 +123,5 @@ mmap+memcpy的方法也还不错，但是这是再完全理想的情况下的结
 [Linux 中的零拷贝技术，第 2 部分](https://www.ibm.com/developerworks/cn/linux/l-cn-zerocopy2/)
 
 [文中所使用的测试代码](https://github.com/buaazp/work/blob/master/copy_test.c)
+
+[测试结果原始数据](https://github.com/buaazp/work)
