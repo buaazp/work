@@ -1,0 +1,50 @@
+mode[1] getfile() begin at: 0.000000
+mode[1] getfile() end at: 1.360000
+mode[1] getfile() CPU time: 1.360000s
+child_pid: 7969
+mode[1] sendfile() begin at: 0.160000
+mode[1] sendfile() end at: 1.130000
+mode[1] sendfile() CPU time: 0.970000s
+child exited normal exit status=0
+-------------------------------------------
+
+mode[1] getfile() begin at: 0.000000
+mode[1] getfile() end at: 1.240000
+mode[1] getfile() CPU time: 1.240000s
+child_pid: 8072
+mode[1] sendfile() begin at: 0.170000
+mode[1] sendfile() end at: 1.050000
+mode[1] sendfile() CPU time: 0.880000s
+child exited normal exit status=0
+-------------------------------------------
+
+mode[1] getfile() begin at: 0.000000
+mode[1] getfile() end at: 1.340000
+mode[1] getfile() CPU time: 1.340000s
+child_pid: 8190
+mode[1] sendfile() begin at: 0.170000
+mode[1] sendfile() end at: 1.120000
+mode[1] sendfile() CPU time: 0.950000s
+child exited normal exit status=0
+-------------------------------------------
+
+mode[1] getfile() begin at: 0.000000
+mode[1] getfile() end at: 1.340000
+mode[1] getfile() CPU time: 1.340000s
+child_pid: 8292
+mode[1] sendfile() begin at: 0.170000
+mode[1] sendfile() end at: 1.130000
+mode[1] sendfile() CPU time: 0.960000s
+child exited normal exit status=0
+-------------------------------------------
+
+mode[1] getfile() begin at: 0.000000
+mode[1] getfile() end at: 1.340000
+mode[1] getfile() CPU time: 1.340000s
+child_pid: 8370
+mode[1] sendfile() begin at: 0.170000
+mode[1] sendfile() end at: 1.120000
+mode[1] sendfile() CPU time: 0.950000s
+child exited normal exit status=0
+-------------------------------------------
+
