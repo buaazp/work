@@ -119,28 +119,28 @@ int main(int argc,char **argv)
     return 0;
 }
 
-void cal_md5(const char *buff, const int len, char *md5)                                                                       
-{                                                                                                                              
-    printf("Begin to Caculate MD5...\n");                                                                           
-    md5_state_t mdctx;                                                                                                         
-    md5_byte_t md_value[16];                                                                                                   
-    char md5sum[33];                                                                                                           
-    int i;                                                                                                                     
-    int h, l;                                                                                                                  
-    md5_init(&mdctx);                                                                                                          
-    md5_append(&mdctx, (const unsigned char*)(buff), len);                                                                     
-    md5_finish(&mdctx, md_value);                                                                                              
-                                                                                                                               
-    for(i=0; i<16; ++i)                                                                                                        
-    {                                                                                                                          
-        h = md_value[i] & 0xf0;                                                                                                
-        h >>= 4;                                                                                                               
-        l = md_value[i] & 0x0f;                                                                                                
-        md5sum[i * 2] = (char)((h >= 0x0 && h <= 0x9) ? (h + 0x30) : (h + 0x57));                                              
-        md5sum[i * 2 + 1] = (char)((l >= 0x0 && l <= 0x9) ? (l + 0x30) : (l + 0x57));                                          
-    }                                                                                                                          
-    md5sum[32] = '\0';                                                                                                         
-    strcpy(md5, md5sum);                                                                                                       
+void cal_md5(const char *buff, const int len, char *md5)
+{
+    printf("Begin to Caculate MD5...\n");
+    md5_state_t mdctx;
+    md5_byte_t md_value[16];
+    char md5sum[33];
+    int i;
+    int h, l;
+    md5_init(&mdctx);
+    md5_append(&mdctx, (const unsigned char*)(buff), len);
+    md5_finish(&mdctx, md_value);
+
+    for(i=0; i<16; ++i)
+    {
+        h = md_value[i] & 0xf0;
+        h >>= 4;
+        l = md_value[i] & 0x0f;
+        md5sum[i * 2] = (char)((h >= 0x0 && h <= 0x9) ? (h + 0x30) : (h + 0x57));
+        md5sum[i * 2 + 1] = (char)((l  >= 0x0 && l <= 0x9) ? (l + 0x30) : (l + 0x57));
+    }
+    md5sum[32] = '\0';
+    strcpy(md5, md5sum);
     printf("md5: %s\n", md5sum);
 }
 
@@ -235,7 +235,8 @@ void sendfile(int mode)
         exit(EXIT_FAILURE);
     }
 
-    return;
+    if(usrmem != NULL)
+        free(usrmem);
 }
 
 void getfile(int mode)
@@ -321,6 +322,8 @@ void getfile(int mode)
         perror("getfile(): shmdt failed");
         exit(EXIT_FAILURE);
     }
-    return;
+
+    if(usrmem != NULL)
+        free(usrmem);
 }
 
