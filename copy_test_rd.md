@@ -61,9 +61,90 @@ Linux中传统的 I/O 操作是一种缓冲I/O，I/O过程中产生的数据传�
 
 如本文第二部分所描述的那样，父进程读取原始数据，拷贝至管道中，子进程从管道中获取数据，再写到磁盘上，使用read()和write()方法。
 
+*process_1 sendfile():*
+
+	char buffer[BUF_SIZE];
+    while((bytes = read(in_fd,buffer,sizeof(buffer))) >0)
+    {
+        if(write(pipefd[1],buffer,bytes) != bytes)
+        {
+            perror("write pipe errno");
+            exit(1);
+        }
+    }
+
+*process_2 getfile():*
+
+    char buffer[BUF_SIZE];
+    while(len > 0)
+    {
+        if((bytes = read(pipefd[0],buffer,sizeof(buffer))) < 0)
+        {
+            perror("read pipefd error");
+            exit(1);
+        }
+        if((write(out_fd1,buffer,bytes)) != bytes)
+        {
+            perror("write out_fd1 error");
+            exit(1);
+        }
+        else
+            len -= bytes;
+    }
+
 ####2. mmap和共享内存方法
 
 此方法采用mmap将源数据fd映射至内存中，然后进行memcpy拷贝给共享内存，其他进程也将至目标数据fd进行mmap映射至内存中，再从共享内存memcpy出来，这样当memcpy结束时，数据就已经拷贝至目标fd中，减少了拷贝次数。
+
+*process_1 sendfile():*
+
+    void *src = mmap(NULL, len, PROT_READ, MAP_SHARED, in_fd, 0);
+    if(src==MAP_FAILED) {
+        perror("mmap map src faild");
+        return;
+    }
+
+    void *shm = shared_memory;
+
+    int size=BUF_SIZE,total=0;
+    while(total < len)
+    {
+        size = len - total > BUF_SIZE ? BUF_SIZE : len-total;
+        memcpy(shm,src,size);
+        shm += size;
+        src += size;
+        total += size;
+        //printf("total_write=%d size=%d\n", total, size);
+    }
+
+    munmap(src, len);
+
+*process_2 getfile():*
+
+    if(ftruncate(out_fd2, len) < 0) {
+        perror("ftruncate faild");
+        return;
+    }
+    void *dst = mmap(NULL, len, PROT_READ|PROT_WRITE, MAP_SHARED, out_fd2, 0);
+    if(dst==MAP_FAILED) {
+        perror("mmap map dst faild");
+        return;
+    }
+
+    void *shm = shared_memory;
+
+    int size=BUF_SIZE,total=0;
+    while(total < len)
+    {
+        size = len - total > BUF_SIZE ? BUF_SIZE : len-total;
+        memcpy(dst, shm, size);
+        shm += size;
+        dst += size;
+        total += size;
+        //printf("total_read=%d size=%d\n", total, size);
+    }
+
+    munmap(dst, len);
 
 **mmap()详解**
 
@@ -81,6 +162,33 @@ Linux中传统的 I/O 操作是一种缓冲I/O，I/O过程中产生的数据传�
 ####3. splice()方法
 
 该方法中我们先启用一对管道，在父进程中将原始数据fd和pipe[1]进行splice，然后在子进程中将pipe[0]和目标数据fd进行splice，代码简单，在两次splice之后就完成了数据的进程间拷贝。
+
+
+*process_1 sendfile():*
+
+    while(len > 0)
+    {
+        if((bytes=splice(in_fd,NULL,pipefd[1],NULL,len,0x1))<0)
+        {
+            perror("splice in_fd faild");
+            return;
+        }
+        else
+            len -= bytes;
+    }
+
+*process_2 getfile():*
+
+    while(len > 0)
+    {
+        if((bytes=splice(pipefd[0],NULL,out_fd3,NULL,len,0x1))<0)
+        {
+            perror("splice out_fd3 faild");
+            return;
+        }
+        else
+            len -= bytes;
+    }
 
 **splice()详解**
 
