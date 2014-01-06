@@ -7,20 +7,22 @@
  */
 
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<fcntl.h>
-#include<sys/stat.h>
-#include<unistd.h>
-#include<time.h>
-#include<sys/mman.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <time.h>
+#include <sys/mman.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <sys/uio.h>
+#include "zmd5.h"
 
 #define MAX 1024
 #define BUF_SIZE 4096
+#define PIPE_BUF 4096
 #define SHMSIZ 1073741824
 
 pid_t pid;
@@ -29,6 +31,7 @@ int pipefd[2];
 int shmid;
 struct stat statbuf;
 
+void cal_md5(const char *buff, const int len, char *md5);
 void sendfile(int mode);
 void getfile(int mode);
 
@@ -36,7 +39,7 @@ int main(int argc,char **argv)
 {
     if(argc!=3) 
     {
-        perror("Usage: copy [filename] [copy_mode]\n mode: 1. pipe 2. memcpy 3. splice\n");
+        perror("Usage: copy [filename] [copy_mode]\n mode: 1. memcpy 2. splice\n");
         return 1;
     }
 
@@ -56,15 +59,12 @@ int main(int argc,char **argv)
         exit(EXIT_FAILURE);
     }
 
-    
-
     shmid = shmget((key_t)1234, SHMSIZ, 0666 | IPC_CREAT);
     if(shmid == -1)
     {
         perror("shmget failed");
         exit(EXIT_FAILURE);
     }
-
 
     pipe(pipefd);
 
@@ -79,7 +79,7 @@ int main(int argc,char **argv)
             break;
         default:
         {
-                        printf("child_pid: %d\n", pid);
+            printf("child_pid: %d\n", pid);
             sendfile(mode);
         }
     }
@@ -119,13 +119,38 @@ int main(int argc,char **argv)
     return 0;
 }
 
+void cal_md5(const char *buff, const int len, char *md5)                                                                       
+{                                                                                                                              
+    printf("Begin to Caculate MD5...\n");                                                                           
+    md5_state_t mdctx;                                                                                                         
+    md5_byte_t md_value[16];                                                                                                   
+    char md5sum[33];                                                                                                           
+    int i;                                                                                                                     
+    int h, l;                                                                                                                  
+    md5_init(&mdctx);                                                                                                          
+    md5_append(&mdctx, (const unsigned char*)(buff), len);                                                                     
+    md5_finish(&mdctx, md_value);                                                                                              
+                                                                                                                               
+    for(i=0; i<16; ++i)                                                                                                        
+    {                                                                                                                          
+        h = md_value[i] & 0xf0;                                                                                                
+        h >>= 4;                                                                                                               
+        l = md_value[i] & 0x0f;                                                                                                
+        md5sum[i * 2] = (char)((h >= 0x0 && h <= 0x9) ? (h + 0x30) : (h + 0x57));                                              
+        md5sum[i * 2 + 1] = (char)((l >= 0x0 && l <= 0x9) ? (l + 0x30) : (l + 0x57));                                          
+    }                                                                                                                          
+    md5sum[32] = '\0';                                                                                                         
+    strcpy(md5, md5sum);                                                                                                       
+    printf("md5: %s\n", md5sum);
+}
+
 void sendfile(int mode)
 {
     int len=statbuf.st_size;
     int bytes;
     void *usrmem;
     usrmem = malloc(SHMSIZ);
-    if(usrmem < 0)
+    if(usrmem == NULL)
     {
         perror("malloc");
         exit(EXIT_FAILURE);
@@ -137,10 +162,9 @@ void sendfile(int mode)
         memcpy(head, buffer, bytes);
         head += bytes;
     }
+    char md5[33];
+    cal_md5(usrmem, len, md5);
     //printf("pid: [%d] out bytes=%d\n", pid, bytes);
-    struct iovec iov;
-    iov.iov_base = usrmem;
-    iov.iov_len = len;
 
     void *shared_memory = shmat(shmid, (void *)0, 0);
     if(shared_memory == (void *)-1)
@@ -167,27 +191,37 @@ void sendfile(int mode)
             shm += size;
             src += size;
             total += size;
-            //printf("total_write=%d size=%d\n", total, size);
-            printf("mode[%d] sendfile() total=%d size=%d\n", mode, total, size);
+            //printf("mode[%d] sendfile() total=%d size=%d\n", mode, total, size);
         }
+        //cal_md5(shared_memory, len, md5);
     }
 
     else if(mode == 2)
     {
+        char *p = usrmem;
+        size_t send;
+        size_t left = len;
+        long ret;
+        struct iovec iov;
         long nr_segs = 1;
         int flags = 0x1;
 
-        while(len > 0)
+        while (left > 0)
         {
-            if((bytes = vmsplice(pipefd[1], &iov, nr_segs, flags)) < 0)
-            //if((bytes=splice(in_fd,NULL,pipefd[1],NULL,len,0x1))<0)
+            send = left > PIPE_BUF ? PIPE_BUF : left;
+            iov.iov_base = p;
+            iov.iov_len = send;
+
+            ret = vmsplice(pipefd[1], &iov, nr_segs, flags);
+            if (ret == -1)
             {
-                perror("vmsplice pipefd faild");
+                perror("vmsplice failed");
                 return;
             }
-            else
-                len -= bytes;
-            printf("mode[%d] sendfile() len=%d bytes=%d\n", mode, len, bytes);
+
+            left -= ret;
+            p += ret;
+            //printf("mode[%d] sendfile() left=%d ret=%d\n", mode, left, ret);
         }
     }
 
@@ -207,17 +241,15 @@ void sendfile(int mode)
 void getfile(int mode)
 {
     int len=statbuf.st_size;
+    char md5[33];
     int bytes;
     void *usrmem;
     usrmem = malloc(SHMSIZ);
-    if(usrmem < 0)
+    if(usrmem == NULL)
     {
         perror("malloc");
         exit(EXIT_FAILURE);
     }
-    struct iovec iov;
-    iov.iov_base = usrmem;
-    iov.iov_len = len;
 
     void *shared_memory = shmat(shmid, (void *)0, 0);
     if(shared_memory == (void *)-1)
@@ -233,6 +265,7 @@ void getfile(int mode)
 
     if(mode == 1)
     {
+        sleep(5);
         void *shm = shared_memory;
         void *dst = usrmem;
        
@@ -244,31 +277,44 @@ void getfile(int mode)
             shm += size;
             dst += size;
             total += size;
-            printf("mode[%d] getfile() total=%d size=%d\n", mode, total, size);
+            //printf("mode[%d] getfile() total=%d size=%d\n", mode, total, size);
         }
     }
 
     else if(mode == 2)
     {
+        char *p = usrmem;
+        size_t get;
+        size_t left = len;
+        long ret;
+        struct iovec iov;
         long nr_segs = 1;
         int flags = 0x1;
-        while(len > 0)
+
+        while (left > 0)
         {
-            if((bytes = vmsplice(pipefd[0], &iov, nr_segs, flags)) < 0)
-            //if((bytes=splice(pipefd[0],NULL,out_fd3,NULL,len,0x1))<0)
+            get = left > PIPE_BUF ? PIPE_BUF : left;
+            iov.iov_base = p;
+            iov.iov_len = get;
+
+            ret = vmsplice(pipefd[0], &iov, nr_segs, flags);
+            if (ret == -1)
             {
-                perror("splice out_fd3 faild");
+                perror("vmsplice failed");
                 return;
             }
-            else
-                len -= bytes;
-            printf("mode[%d] getfile() len=%d bytes=%d\n", mode, len, bytes);
+
+            left -= ret;
+            p += ret;
+            //printf("mode[%d] getfile() left=%d ret=%d\n", mode, left, ret);
         }
     }
 
     end = clock();
     printf("mode[%d] getfile() end at: %f\n", mode, (double)end/CLOCKS_PER_SEC);
     printf("mode[%d] getfile() CPU time: %fs\n", mode, (double)(end - begin)/CLOCKS_PER_SEC);
+
+    cal_md5(usrmem, len, md5);
 
     if(shmdt(shared_memory) == -1)
     {
