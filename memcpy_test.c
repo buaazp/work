@@ -29,6 +29,7 @@ pid_t pid;
 int in_fd;
 int pipefd[2]; 
 int shmid;
+pthread_mutex_t lock;
 struct stat statbuf;
 
 void cal_md5(const char *buff, const int len, char *md5);
@@ -65,6 +66,9 @@ int main(int argc,char **argv)
         perror("shmget failed");
         exit(EXIT_FAILURE);
     }
+
+    pthread_mutex_init(&lock,NULL);
+    pthread_mutex_lock(&lock);
 
     pipe(pipefd);
 
@@ -113,6 +117,7 @@ int main(int argc,char **argv)
         }
     }
 
+    pthread_mutex_destroy(&lock);
     close(pipefd[0]);
     close(pipefd[1]);
     close(in_fd);
@@ -176,7 +181,7 @@ void sendfile(int mode)
 
     clock_t begin, end;
     begin = clock();
-    printf("mode[%d] sendfile() begin at: %f\n", mode, (double)begin/CLOCKS_PER_SEC);
+    //printf("mode[%d] sendfile() begin at: %f\n", mode, (double)begin/CLOCKS_PER_SEC);
 
     if(mode == 1)
     {
@@ -193,6 +198,7 @@ void sendfile(int mode)
             total += size;
             //printf("mode[%d] sendfile() total=%d size=%d\n", mode, total, size);
         }
+        pthread_mutex_unlock(&lock);
         //cal_md5(shared_memory, len, md5);
     }
 
@@ -226,7 +232,7 @@ void sendfile(int mode)
     }
 
     end = clock();
-    printf("mode[%d] sendfile() end at: %f\n", mode, (double)end/CLOCKS_PER_SEC);
+    //printf("mode[%d] sendfile() end at: %f\n", mode, (double)end/CLOCKS_PER_SEC);
     printf("mode[%d] sendfile() CPU time: %fs\n", mode, (double)(end - begin)/CLOCKS_PER_SEC);
 
     if(shmdt(shared_memory) == -1)
@@ -262,14 +268,14 @@ void getfile(int mode)
 
     clock_t begin, end;
     begin = clock();
-    printf("mode[%d] getfile() begin at: %f\n", mode, (double)begin/CLOCKS_PER_SEC);
+    //printf("mode[%d] getfile() begin at: %f\n", mode, (double)begin/CLOCKS_PER_SEC);
 
     if(mode == 1)
     {
-        sleep(5);
         void *shm = shared_memory;
         void *dst = usrmem;
        
+        pthread_mutex_lock(&lock);
         int size=BUF_SIZE,total=0;
         while(total < len)
         {
@@ -280,6 +286,7 @@ void getfile(int mode)
             total += size;
             //printf("mode[%d] getfile() total=%d size=%d\n", mode, total, size);
         }
+        pthread_mutex_unlock(&lock);
     }
 
     else if(mode == 2)
@@ -312,7 +319,7 @@ void getfile(int mode)
     }
 
     end = clock();
-    printf("mode[%d] getfile() end at: %f\n", mode, (double)end/CLOCKS_PER_SEC);
+    //printf("mode[%d] getfile() end at: %f\n", mode, (double)end/CLOCKS_PER_SEC);
     printf("mode[%d] getfile() CPU time: %fs\n", mode, (double)(end - begin)/CLOCKS_PER_SEC);
 
     cal_md5(usrmem, len, md5);
