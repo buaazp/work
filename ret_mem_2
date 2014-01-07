@@ -1,0 +1,220 @@
+#1
+mode[2] getfile() CPU time: 0.209085s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5169
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.145651s
+child exited normal exit status=0
+-------------------------------------------
+
+#2
+mode[2] getfile() CPU time: 0.213897s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5179
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.143401s
+child exited normal exit status=0
+-------------------------------------------
+
+#3
+mode[2] getfile() CPU time: 0.222481s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5181
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.150038s
+child exited normal exit status=0
+-------------------------------------------
+
+#4
+mode[2] getfile() CPU time: 0.218213s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5183
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.151683s
+child exited normal exit status=0
+-------------------------------------------
+
+#5
+mode[2] getfile() CPU time: 0.221139s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5185
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.148657s
+child exited normal exit status=0
+-------------------------------------------
+
+#6
+mode[2] getfile() CPU time: 0.212158s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5187
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.144304s
+child exited normal exit status=0
+-------------------------------------------
+
+#7
+mode[2] getfile() CPU time: 0.211041s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5189
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.138859s
+child exited normal exit status=0
+-------------------------------------------
+
+#8
+mode[2] getfile() CPU time: 0.224671s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5191
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.154818s
+child exited normal exit status=0
+-------------------------------------------
+
+#9
+mode[2] getfile() CPU time: 0.220576s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5193
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.152840s
+child exited normal exit status=0
+-------------------------------------------
+
+#10
+mode[2] getfile() CPU time: 0.216447s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5195
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.151929s
+child exited normal exit status=0
+-------------------------------------------
+
+#11
+mode[2] getfile() CPU time: 0.212292s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5197
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.145024s
+child exited normal exit status=0
+-------------------------------------------
+
+#12
+mode[2] getfile() CPU time: 0.215758s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5199
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.149523s
+child exited normal exit status=0
+-------------------------------------------
+
+#13
+mode[2] getfile() CPU time: 0.224711s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5201
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.157933s
+child exited normal exit status=0
+-------------------------------------------
+
+#14
+mode[2] getfile() CPU time: 0.210194s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5203
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.139709s
+child exited normal exit status=0
+-------------------------------------------
+
+#15
+mode[2] getfile() CPU time: 0.208562s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5205
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.144628s
+child exited normal exit status=0
+-------------------------------------------
+
+#16
+mode[2] getfile() CPU time: 0.215149s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5207
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.145705s
+child exited normal exit status=0
+-------------------------------------------
+
+#17
+mode[2] getfile() CPU time: 0.215987s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5209
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.146228s
+child exited normal exit status=0
+-------------------------------------------
+
+#18
+mode[2] getfile() CPU time: 0.213490s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5211
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.147034s
+child exited normal exit status=0
+-------------------------------------------
+
+#19
+mode[2] getfile() CPU time: 0.215268s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5213
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.145948s
+child exited normal exit status=0
+-------------------------------------------
+
+#20
+mode[2] getfile() CPU time: 0.215012s
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+child_pid: 5215
+Begin to Caculate MD5...
+md5: 1f5039e50bd66b290c56684d8550c6c2
+mode[2] sendfile() CPU time: 0.146067s
+child exited normal exit status=0
+-------------------------------------------
+
