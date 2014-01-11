@@ -1,4 +1,5 @@
 *.swp
+.directory
 bigfile
 blob
 memcpy_test

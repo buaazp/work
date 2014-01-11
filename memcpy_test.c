@@ -40,21 +40,21 @@ int main(int argc,char **argv)
 {
     if(argc!=3) 
     {
-        perror("Usage: copy [filename] [copy_mode]\n mode: 1. memcpy 2. splice\n");
-        return 1;
+        perror("Usage: copy [filename] [copy_mode]\n mode: 1. memcpy 2. splice\n note: file size should be less than 512M.\n");
+        return 0;
     }
 
     int mode = atoi(argv[2]);
 
     if((in_fd = open(argv[1],O_RDONLY))<0) { 
         perror("open in_fd faild");
-        return 1;
+        return 0;
     }
    
     fstat(in_fd,&statbuf);
     
     int len = statbuf.st_size;
-    if(len > SHMSIZ)
+    if(len >= SHMSIZ)
     {
         perror("file size");
         exit(EXIT_FAILURE);

@@ -1,220 +1,220 @@
 #1
-mode[1] getfile() CPU time: 0.420696s
+mode[1] getfile() CPU time: 0.510000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5129
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 1918
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.099868s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.270000s
 child exited normal exit status=0
 -------------------------------------------
 
 #2
-mode[1] getfile() CPU time: 0.228318s
+mode[1] getfile() CPU time: 0.510000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5131
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 1938
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.108716s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.280000s
 child exited normal exit status=0
 -------------------------------------------
 
 #3
-mode[1] getfile() CPU time: 0.232877s
+mode[1] getfile() CPU time: 0.480000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5133
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 1958
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.108387s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.280000s
 child exited normal exit status=0
 -------------------------------------------
 
 #4
-mode[1] getfile() CPU time: 0.255019s
+mode[1] getfile() CPU time: 0.480000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5135
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 1978
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.113425s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.290000s
 child exited normal exit status=0
 -------------------------------------------
 
 #5
-mode[1] getfile() CPU time: 0.254869s
+mode[1] getfile() CPU time: 0.490000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5137
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 1998
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.106650s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.280000s
 child exited normal exit status=0
 -------------------------------------------
 
 #6
-mode[1] getfile() CPU time: 0.250331s
+mode[1] getfile() CPU time: 0.490000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5139
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2018
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.116114s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.280000s
 child exited normal exit status=0
 -------------------------------------------
 
 #7
-mode[1] getfile() CPU time: 0.243991s
+mode[1] getfile() CPU time: 0.490000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5141
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2039
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.100451s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.280000s
 child exited normal exit status=0
 -------------------------------------------
 
 #8
-mode[1] getfile() CPU time: 0.233283s
+mode[1] getfile() CPU time: 0.480000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5143
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2059
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.108047s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.280000s
 child exited normal exit status=0
 -------------------------------------------
 
 #9
-mode[1] getfile() CPU time: 0.261048s
+mode[1] getfile() CPU time: 0.360000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5145
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2079
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.110712s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.270000s
 child exited normal exit status=0
 -------------------------------------------
 
 #10
-mode[1] getfile() CPU time: 0.249318s
+mode[1] getfile() CPU time: 0.340000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5147
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2105
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.107548s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.170000s
 child exited normal exit status=0
 -------------------------------------------
 
 #11
-mode[1] getfile() CPU time: 0.244382s
+mode[1] getfile() CPU time: 0.360000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5149
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2134
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.105856s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.250000s
 child exited normal exit status=0
 -------------------------------------------
 
 #12
-mode[1] getfile() CPU time: 0.244044s
+mode[1] getfile() CPU time: 0.350000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5151
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2157
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.106820s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.240000s
 child exited normal exit status=0
 -------------------------------------------
 
 #13
-mode[1] getfile() CPU time: 0.255442s
+mode[1] getfile() CPU time: 0.350000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5153
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2183
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.098698s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.260000s
 child exited normal exit status=0
 -------------------------------------------
 
 #14
-mode[1] getfile() CPU time: 0.255094s
+mode[1] getfile() CPU time: 0.340000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5155
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2212
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.109045s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.270000s
 child exited normal exit status=0
 -------------------------------------------
 
 #15
-mode[1] getfile() CPU time: 0.254563s
+mode[1] getfile() CPU time: 0.370000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5157
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2235
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.105296s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.260000s
 child exited normal exit status=0
 -------------------------------------------
 
 #16
-mode[1] getfile() CPU time: 0.228070s
+mode[1] getfile() CPU time: 0.340000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5159
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2255
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.112027s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.250000s
 child exited normal exit status=0
 -------------------------------------------
 
 #17
-mode[1] getfile() CPU time: 0.247746s
+mode[1] getfile() CPU time: 0.350000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5161
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2278
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.105524s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.270000s
 child exited normal exit status=0
 -------------------------------------------
 
 #18
-mode[1] getfile() CPU time: 0.244977s
+mode[1] getfile() CPU time: 0.350000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5163
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2301
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.117224s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.260000s
 child exited normal exit status=0
 -------------------------------------------
 
 #19
-mode[1] getfile() CPU time: 0.273272s
+mode[1] getfile() CPU time: 0.360000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5165
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2324
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.107884s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.260000s
 child exited normal exit status=0
 -------------------------------------------
 
 #20
-mode[1] getfile() CPU time: 0.253009s
+mode[1] getfile() CPU time: 0.360000s
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-child_pid: 5167
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+child_pid: 2347
 Begin to Caculate MD5...
-md5: 1f5039e50bd66b290c56684d8550c6c2
-mode[1] sendfile() CPU time: 0.116767s
+md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+mode[1] sendfile() CPU time: 0.270000s
 child exited normal exit status=0
 -------------------------------------------
 
