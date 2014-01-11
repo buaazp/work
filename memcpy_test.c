@@ -1,11 +1,10 @@
 /**
- * @file copy_test.c
- * @brief Test three copy methods between processes.
+ * @file memcpy_test.c
+ * @brief memcpy vs vmsplice test.
  * @author 招牌疯子 zp@buaa.us
  * @version 1.0.0
- * @date 2014-01-06
+ * @date 2014-01-11
  */
-
 
 #include <stdio.h>
 #include <stdlib.h>
