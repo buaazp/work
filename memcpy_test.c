@@ -1,10 +1,6 @@
 /**
  * @file memcpy_test.c
-<<<<<<< HEAD
  * @brief memcpy vs vmsplice test
-=======
- * @brief memcpy vs vmsplice test.
->>>>>>> 43a1e396d9459fac49cc0732904deadfb276dea6
  * @author 招牌疯子 zp@buaa.us
  * @version 1.0.0
  * @date 2014-01-11
