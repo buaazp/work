@@ -1,0 +1,560 @@
+#1
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#2
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#3
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.150000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.230000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#4
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#5
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.250000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#6
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#7
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#8
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#9
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#10
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.250000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#11
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#12
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#13
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.250000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#14
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#15
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#16
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.250000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#17
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.250000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#18
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#19
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.250000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+
+#20
+
+=======================
+step1: before memory copy:
+
+    [srcmem] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem1] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+    [destmem2] md5: e5c834fbdaa6bfd8eac5eb9404eefdd4
+
+=======================
+step2: start memcpy() copy...
+
+    memcpy() CPU time: 0.140000s
+
+=======================
+step3: start mymemcpy() copy...
+
+    mymemcpy() CPU time: 0.240000s
+
+=======================
+step4: after memory copy:
+
+    [destmem1] md5: 04c6d733f8a600a88d81911b6c9f90e9
+    [destmem2] md5: 04c6d733f8a600a88d81911b6c9f90e9
+
+=======================
+step5: copy test finished.
+

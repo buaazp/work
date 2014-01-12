@@ -1,5 +1,9 @@
 *.swp
+cscope.*
+random
+tags
 .directory
 bigfile
 blob
 memcpy_test
+mymemcpy
