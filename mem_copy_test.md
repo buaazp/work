@@ -159,9 +159,24 @@ getfile的时候只需要把第一个参数设为管道的读端，因为vmsplic
 
 ### 对比方法
 
-对比的是上述四个过程所消耗的CPU时间，为了检验数据拷贝是否完成，在拷贝开始前和结束后对A、B进程的用户空间计算MD5值。
+对比的是上述四个过程所消耗的CPU时间，为了检验数据拷贝是否完成，在拷贝开始前和结束后对A、B进程的用户空间计算MD5值。编译测试程序：
 
-测试对象原始数据是一个1G大小的文件，每种方法各测试20次，统计sendfile过程和getfile过程的时间，两者相加是整个数据拷贝的时间，计算平均值进行对比。
+    gcc zmd5.c memcpy_test.c -o memcpy_test
+
+测试对象原始数据是一个1G大小的文件，每种方法各测试20次，统计sendfile过程和getfile过程的时间，两者相加是整个数据拷贝的时间，计算平均值进行对比。代码所在文件夹下有一个脚本run_memcpy_test.sh来做这件事：
+
+    #!/bin/zsh
+    for((i=1;i<=20;i++));
+    do
+        echo "#"$i >> ret_mem_1;
+        ./memcpy_test bigfile 1 >> ret_mem_1;
+    done
+
+    for((i=1;i<=20;i++));
+    do
+        echo "#"$i >> ret_mem_2;
+        ./memcpy_test bigfile 2 >> ret_mem_2;
+    done
 
 > 为什么不实用K-BEST的方法？
 > 
@@ -187,8 +202,129 @@ splice函数族更加适用的场景应该是涉及到磁盘数据拷贝的情�
 
 > 如需转载，请注明出处，谢谢！
 
+### One more thing
+
+更新于1.12
+
+上述内容完成之后我发现自己已经走火入魔了。。睡觉中觉得不甘心，如果不涉及进程间数据拷贝，而是采用splice的机制来完全替换memcpy()函数会是什么情况呢，于是又封装了一个mymemcpy()，功能和参数与memcpy完全一致，代码如下：
+
+    void *mymemcpy(void *dest, const void *src, size_t n)
+    {
+        void *p = src, *q = dest;
+        size_t send;
+        size_t left = n;
+        long ret;
+        struct iovec iov[2];
+        long nr_segs = 1;
+        int flags = 0x1;
+
+        pipe(pipefd);
+
+        while (left > 0)
+        {
+            send = left > PIPE_BUF ? PIPE_BUF : left;
+            iov[0].iov_base = p;
+            iov[0].iov_len = send;
+
+            ret = vmsplice(pipefd[1], &iov[0], nr_segs, flags);
+            if (ret == -1)
+            {
+                perror("vmsplice failed");
+                return NULL;
+            }
+            p += ret;
+
+            iov[1].iov_base = q;
+            iov[1].iov_len = send;
+            ret = vmsplice(pipefd[0], &iov[1], nr_segs, flags);
+            if (ret == -1)
+            {
+                perror("vmsplice failed");
+                return NULL;
+            }
+            q += ret;
+
+            left -= ret;
+            //printf("mode[%d] sendfile() left=%d ret=%d\n", mode, left, ret);
+        }
+
+        close(pipefd[0]);
+        close(pipefd[1]);
+        return dest;
+    }
+
+具体过程是从src映射到pipe，然后再从pipe映射到dest，等于是把memcpy的操作进行了两遍。
+
+哦了，开始编译：
+
+    gcc zmd5.c mymemcpy.c -o mymemcpy 
+
+生成一个随机内容的文件：
+
+    dd if=/dev/urandom of=random bs=1M count=1000
+
+执行测试脚本另一个run_mymemcpy_test.sh：
+
+    #!/bin/zsh
+    for((i=1;i<=20;i++));
+    do
+        echo "#"$i >> ret_mymem_1;
+        ./mymemcpy random >> ret_mymem_1;
+    done
+
+抽出测试数据中的有用部分：
+
+    cat ret_mymem_1 | grep time
+
+得到的结果如下，由于结果非常稳定，我就不进行统计计算了，直接看原始数据：
+
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.150000s
+    mymemcpy() CPU time: 0.230000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.250000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.250000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.250000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.250000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.250000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.250000s
+    memcpy() CPU time: 0.140000s
+    mymemcpy() CPU time: 0.240000s
+
+可以看到采用vmsplice封装的mymemcpy()方法消耗的时间（0.24~0.25）接近于memcpy()的两倍（稳定0.14），这也应证了上面的结论，即**memcpy过程中并没有进行用户空间到内核空间的拷贝，而是直接在用户空间之间进行**。大家可以放心地使用memcpy了。
+
 ### 测试代码和原始数据
 
 memcpy vs vmsplice [测试代码](https://github.com/buaazp/work/blob/master/memcpy_test.c)
 
-测试结果原始数据，ret_mem_1和ret_mem_2文件 [github地址](https://github.com/buaazp/work)
+mymemcpy vs memcpy [测试代码](https://github.com/buaazp/work/blob/master/mymemcpy.c)
+
+测试结果原始数据，ret_mem_1、ret_mem_2和ret_mymem_1文件 [github地址](https://github.com/buaazp/work)
