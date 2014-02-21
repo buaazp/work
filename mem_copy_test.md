@@ -161,7 +161,7 @@ getfile的时候只需要把第一个参数设为管道的读端，因为vmsplic
 
 对比的是上述四个过程所消耗的CPU时间，为了检验数据拷贝是否完成，在拷贝开始前和结束后对A、B进程的用户空间计算MD5值。编译测试程序：
 
-    gcc zmd5.c memcpy_test.c -o memcpy_test
+    gcc -lpthread -ldl memcpy_test.c zmd5.c -o memcpy_test
 
 测试对象原始数据是一个1G大小的文件，每种方法各测试20次，统计sendfile过程和getfile过程的时间，两者相加是整个数据拷贝的时间，计算平均值进行对比。代码所在文件夹下有一个脚本run_memcpy_test.sh来做这件事：
 

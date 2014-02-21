@@ -17,6 +17,7 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <sys/uio.h>
+#include <pthread.h>
 #include "zmd5.h"
 
 #define MAX 1024
@@ -28,12 +29,39 @@ pid_t pid;
 int in_fd;
 int pipefd[2]; 
 int shmid;
-pthread_mutex_t lock;
+pthread_mutex_t *lock;
 struct stat statbuf;
 
+void init_mutex(void); 
 void cal_md5(const char *buff, const int len, char *md5);
 void sendfile(int mode);
 void getfile(int mode);
+
+//创建共享的mutex  
+void init_mutex(void)
+{  
+    int ret;  
+    //lock一定要是进程间可以共享的，否则无法达到进程间互斥  
+    lock=(pthread_mutex_t*)mmap(NULL, sizeof(pthread_mutex_t), PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, -1, 0);  
+    if( MAP_FAILED==lock )  
+    {  
+        perror("mmap");  
+        exit(1);  
+    }  
+      
+    //设置attr的属性  
+    pthread_mutexattr_t attr;  
+    pthread_mutexattr_init(&attr);  
+    //一定要设置为PTHREAD_PROCESS_SHARED  
+    //具体可以参考http://blog.chinaunix.net/u/22935/showart_340408.html  
+    ret=pthread_mutexattr_setpshared(&attr,PTHREAD_PROCESS_SHARED);  
+    if( ret!=0 )  
+    {  
+        perror("init_mutex pthread_mutexattr_setpshared");  
+        exit(1);  
+    }  
+    pthread_mutex_init(lock, &attr);  
+}
 
 int main(int argc,char **argv)
 {
@@ -66,8 +94,9 @@ int main(int argc,char **argv)
         exit(EXIT_FAILURE);
     }
 
-    pthread_mutex_init(&lock,NULL);
-    pthread_mutex_lock(&lock);
+    init_mutex();
+    //pthread_mutex_init(&lock,NULL);
+    pthread_mutex_lock(lock);
 
     pipe(pipefd);
 
@@ -116,7 +145,8 @@ int main(int argc,char **argv)
         }
     }
 
-    pthread_mutex_destroy(&lock);
+    pthread_mutex_destroy(lock);
+    munmap(lock, sizeof(pthread_mutex_t));
     close(pipefd[0]);
     close(pipefd[1]);
     close(in_fd);
@@ -181,6 +211,9 @@ void sendfile(int mode)
     clock_t begin, end;
     begin = clock();
     //printf("mode[%d] sendfile() begin at: %f\n", mode, (double)begin/CLOCKS_PER_SEC);
+    struct timeval start;
+    gettimeofday(&start, NULL);
+    printf("mode[%d] sendfile() begin at: %d.%d\n", mode, start.tv_sec, start.tv_usec);
 
     if(mode == 1)
     {
@@ -197,7 +230,7 @@ void sendfile(int mode)
             total += size;
             //printf("mode[%d] sendfile() total=%d size=%d\n", mode, total, size);
         }
-        pthread_mutex_unlock(&lock);
+        pthread_mutex_unlock(lock);
         //cal_md5(shared_memory, len, md5);
     }
 
@@ -274,7 +307,7 @@ void getfile(int mode)
         void *shm = shared_memory;
         void *dst = usrmem;
        
-        pthread_mutex_lock(&lock);
+        pthread_mutex_lock(lock);
         int size=BUF_SIZE,total=0;
         while(total < len)
         {
@@ -285,7 +318,7 @@ void getfile(int mode)
             total += size;
             //printf("mode[%d] getfile() total=%d size=%d\n", mode, total, size);
         }
-        pthread_mutex_unlock(&lock);
+        pthread_mutex_unlock(lock);
     }
 
     else if(mode == 2)
@@ -320,6 +353,10 @@ void getfile(int mode)
     end = clock();
     //printf("mode[%d] getfile() end at: %f\n", mode, (double)end/CLOCKS_PER_SEC);
     printf("mode[%d] getfile() CPU time: %fs\n", mode, (double)(end - begin)/CLOCKS_PER_SEC);
+
+    struct timeval finish;
+    gettimeofday(&finish, NULL);
+    printf("mode[%d] getfile() finish at: %d.%d\n", mode, finish.tv_sec, finish.tv_usec);
 
     cal_md5(usrmem, len, md5);
 
